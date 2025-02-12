@@ -34,9 +34,22 @@ class Ui {
       audioBookContainer.style.display = "none";
     });
   }
-  static closeAddModal(closeAddModalButton, formModal) {
+  static closeAddModal(
+    closeAddModalButton,
+    formModal,
+    form,
+    validationMessage,
+    formSubmitButton
+  ) {
     closeAddModalButton.addEventListener("click", () => {
       formModal.classList.remove("display-form");
+      validationMessage.style.display = "none";
+      formSubmitButton.textContent = "Add";
+      form.reset();
+      const invalidInput = document.querySelector(".form__invalid-input");
+      invalidInput?.classList.remove("form__invalid-input");
+      console.log(invalidInput);
+      Ui.currentEditId = null;
     });
   }
 
